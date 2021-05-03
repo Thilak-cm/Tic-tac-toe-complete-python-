@@ -25,23 +25,23 @@ def accept_user_input(turn, all_inputs):
     repeat_input = False
     
     while(p1.isdigit() == False or within_range == False or repeat_input == False):
-        p1 = input("enter a number between 1-9: ")
+        p1 = input("Enter a number between 1-9: ")
         
         if(p1.isdigit() == False):
-            print("sorry this is not a digit!")
+            print("Sorr, this is not a digit!\n")
         else:
             if(int(p1) in range(1,10)):
                 within_range = True
             else:
-                print("sorry this isn't in the valid range")
-                print("enter number between 1 and 9")
+                print("Sorry, this isn't in the valid range!\n")
+                print("Enter number between 1 and 9")
         if(p1 in all_inputs):
-            print("sorry this space is already occupied!try entering a different number")
+            print("Sorry this space is already occupied!try entering a different number!\n")
             repeat_input = False
         elif(within_range == True and p1.isdigit() == True):
             repeat_input = True
             all_inputs.append(p1)
-            print(f"list of inputs: {all_inputs}")
+            print(f"List of inputs: {all_inputs}")
             turn += 1
             
     return(int(p1), turn)
@@ -51,8 +51,8 @@ def accept_user_input(turn, all_inputs):
 
 
 def masterfunc():
-    print("welcome to tic tac toe!\n this is how the positions look with the numbers:")
-    print("  1  |  2  |  3  \n  4  |  5  |  6  \n  7  |  8  |  9\n\n")
+    print("Welcome to tic tac toe!\n This is how the positions look with the numbers:")
+    print("  1  |  2  |  3  \n  4  |  5  |  6  \n  7  |  8  |  9\n")
     mytable = ["_ ", "_ ", "_ ", "_ ", "_ ", "_ ", "_ ", "_ ", "_ "]
     turn = 0
     moves_made = []
@@ -60,16 +60,16 @@ def masterfunc():
     tic_tac_toe_table = show_table(mytable, choice, turn)
     
     for i in range(2,10):
+        print(f"\n-----TURN {i-1} OVER-----\n")
         choice, turn = accept_user_input(turn, moves_made)
-        print(f"\n-----TURN {i} OVER-----\n")
         tic_tac_toe_table = show_table(tic_tac_toe_table, choice, turn)
         if(turn > 3):
             result_of_game = check_for_winner(tic_tac_toe_table)
             if(result_of_game == "game_over"):
-                print("YOU WIN! GAME OVER")
+                print("You win!\nGAME OVER\n")
                 break
             elif(i == 9):
-                print("it is a tie!")
+                print("It is a tie!")
     
 
 
@@ -80,34 +80,22 @@ def check_for_winner(table):
     result = ""
     for i in [0,3,6]:
         if(table[i] == table[i+1] and table[i+1] == table[i+2] and table[i] != "_ "):
-            print("game over, you have won!")
+            print("Game over, you have won!")
             result = "game_over"
-            print(f"{i}, {i+1}, {i+2}")
             break 
     for i in [0,1,2]:
         if(table[i] == table[i+3] and table[i+3] == table[i+6] and table[i] != "_ "):
-            print("game over, you have won!")
+            print("Game over, you have won!")
             result = "game_over"
-            print(f"{i}, {i+3}, {i+6}")
             break 
     if(table[0] == table[4] and table[4] == table[8] and table[0] != "_  "):
-        print("game over, you have won!")
+        print("Game over, you have won!")
         result = "game_over"
     if(table[2] == table[4] and table[4] == table[6] and table[2] != "_ "):
-        print("game over, you have won!")
+        print("Game over, you have won!")
         result = "game_over"
     
     return result 
 
 
-# In[ ]:
-
-
 masterfunc()
-
-
-# In[ ]:
-
-
-
-
