@@ -1,12 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[5]:
-
-
 def show_table(mytable, choice, turn):
-    #print("This is how the table looks with its position numbers:")
-    #print("  1  |  2  |  3  \n  4  |  5  |  6  \n  7  |  8  |  9  ")
     if(turn % 2 == 0):
         mytable[choice - 1] = "o "
     else:
@@ -14,9 +6,6 @@ def show_table(mytable, choice, turn):
     for i in [0,3,6]:
         print(mytable[i] + "| " + mytable[i+1] + "| " + mytable[i+2])
     return mytable
-
-
-# In[6]:
 
 
 def accept_user_input(turn, all_inputs):
@@ -47,9 +36,6 @@ def accept_user_input(turn, all_inputs):
     return(int(p1), turn)
 
 
-# In[18]:
-
-
 def masterfunc():
     print("Welcome to tic tac toe!\n This is how the positions look with the numbers:")
     print("  1  |  2  |  3  \n  4  |  5  |  6  \n  7  |  8  |  9\n")
@@ -72,26 +58,22 @@ def masterfunc():
                 print("It is a tie!")
     
 
-
-# In[19]:
-
-
 def check_for_winner(table):
     result = ""
     for i in [0,3,6]:
-        if(table[i] == table[i+1] and table[i+1] == table[i+2] and table[i] != "_ "):
+        if(table[i] == table[i+1] == table[i+2] and table[i] != "_ "):
             print("Game over, you have won!")
             result = "game_over"
             break 
     for i in [0,1,2]:
-        if(table[i] == table[i+3] and table[i+3] == table[i+6] and table[i] != "_ "):
+        if(table[i] == table[i+3] == table[i+6] and table[i] != "_ "):
             print("Game over, you have won!")
             result = "game_over"
             break 
-    if(table[0] == table[4] and table[4] == table[8] and table[0] != "_  "):
+    if(table[0] == table[4] == table[8] and table[0] != "_  "):
         print("Game over, you have won!")
         result = "game_over"
-    if(table[2] == table[4] and table[4] == table[6] and table[2] != "_ "):
+    if(table[2] == table[4] == table[6] and table[2] != "_ "):
         print("Game over, you have won!")
         result = "game_over"
     
