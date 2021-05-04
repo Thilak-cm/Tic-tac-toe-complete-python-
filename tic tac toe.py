@@ -17,7 +17,7 @@ def accept_user_input(turn, all_inputs):
         p1 = input("Enter a number between 1-9: ")
         
         if(p1.isdigit() == False):
-            print("Sorr, this is not a digit!\n")
+            print("Sorry, this is not a digit!\n")
         else:
             if(int(p1) in range(1,10)):
                 within_range = True
