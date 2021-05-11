@@ -1,3 +1,5 @@
+#TIC TAC TOE 
+
 def show_table(mytable, choice, turn):
     if(turn % 2 == 0):
         mytable[choice - 1] = "o "
@@ -25,7 +27,7 @@ def accept_user_input(turn, all_inputs):
                 print("Sorry, this isn't in the valid range!\n")
                 print("Enter number between 1 and 9")
         if(p1 in all_inputs):
-            print("Sorry this space is already occupied!try entering a different number!\n")
+            print("Sorry this space is already occupied!Try entering a different number!\n")
             repeat_input = False
         elif(within_range == True and p1.isdigit() == True):
             repeat_input = True
@@ -34,6 +36,17 @@ def accept_user_input(turn, all_inputs):
             turn += 1
             
     return(int(p1), turn)
+
+
+def valid_input(choice):
+    choice = choice.capitalize()
+    while True:
+        if(choice == "Yes" or choice == "No"):
+            break
+        else:
+            print("Sorry this is an invalid input!")
+            choice = input("Enter Yes or No: ").capitalize()
+    return choice 
 
 
 def masterfunc():
@@ -46,7 +59,7 @@ def masterfunc():
     tic_tac_toe_table = show_table(mytable, choice, turn)
     
     for i in range(2,10):
-        print(f"\n-----TURN {i-1} OVER-----\n")
+        print(f"\n------TURN {i}-------\n")
         choice, turn = accept_user_input(turn, moves_made)
         tic_tac_toe_table = show_table(tic_tac_toe_table, choice, turn)
         if(turn > 3):
@@ -56,7 +69,7 @@ def masterfunc():
                 break
             elif(i == 9):
                 print("It is a tie!")
-    
+
 
 def check_for_winner(table):
     result = ""
@@ -76,8 +89,14 @@ def check_for_winner(table):
     if(table[2] == table[4] == table[6] and table[2] != "_ "):
         print("Game over, you have won!")
         result = "game_over"
+        return result 
+
+
+while True:
+    masterfunc()
+    choice = input("Do you want to play once more?(Yes/No): ")
+    choice = valid_input(choice)
+    if choice == "No":
+        print("Have a good day!")
+        break
     
-    return result 
-
-
-masterfunc()
