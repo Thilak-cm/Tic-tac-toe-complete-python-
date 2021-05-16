@@ -1,5 +1,6 @@
 #TIC TAC TOE 
 
+#This function prints table for every move made 
 def show_table(mytable, choice, turn):
     if(turn % 2 == 0):
         mytable[choice - 1] = "o "
@@ -10,6 +11,7 @@ def show_table(mytable, choice, turn):
     return mytable
 
 
+#Accepts user input
 def accept_user_input(turn, all_inputs):
     p1 = "WRONG"
     within_range = False
@@ -38,6 +40,7 @@ def accept_user_input(turn, all_inputs):
     return(int(p1), turn)
 
 
+#Checks whether input entered is valid or not, that is, a yes or a no
 def valid_input(choice):
     choice = choice.capitalize()
     while True:
@@ -70,6 +73,7 @@ def masterfunc():
         	print("It is a tie!")
 
 
+#Entails all possibilites of winning in this game and checks if that is the case
 def check_for_winner(table):
     result = ""
     for i in [0,3,6]:
