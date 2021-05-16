@@ -59,16 +59,15 @@ def masterfunc():
     tic_tac_toe_table = show_table(mytable, choice, turn)
     
     for i in range(2,10):
-        print(f"\n------TURN {i}-------\n")
+        print(f"\n-------TURN {i}-------\n")
         choice, turn = accept_user_input(turn, moves_made)
         tic_tac_toe_table = show_table(tic_tac_toe_table, choice, turn)
-        if(turn > 3):
-            result_of_game = check_for_winner(tic_tac_toe_table)
-            if(result_of_game == "game_over"):
-                print("You win!\nGAME OVER\n")
-                break
-            elif(i == 9):
-                print("It is a tie!")
+        result_of_game = check_for_winner(tic_tac_toe_table)
+        if(result_of_game == "game_over"):
+            print("You win!\nGAME OVER\n")
+            break
+        elif(i == 9):
+        	print("It is a tie!")
 
 
 def check_for_winner(table):
@@ -77,15 +76,16 @@ def check_for_winner(table):
         if(table[i] == table[i+1] == table[i+2] and table[i] != "_ "):
             print("Game over, you have won!")
             result = "game_over"
-            break 
+            return result 
     for i in [0,1,2]:
         if(table[i] == table[i+3] == table[i+6] and table[i] != "_ "):
             print("Game over, you have won!")
             result = "game_over"
-            break 
-    if(table[0] == table[4] == table[8] and table[0] != "_  "):
+            return result
+    if(table[0] == table[4] == table[8] and table[0] != "_ "):
         print("Game over, you have won!")
         result = "game_over"
+        return result
     if(table[2] == table[4] == table[6] and table[2] != "_ "):
         print("Game over, you have won!")
         result = "game_over"
